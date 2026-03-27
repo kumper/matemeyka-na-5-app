@@ -1,0 +1,34 @@
+<app-card>
+  <div class="text-center mb-4">
+    <h1 class="fw-bold mb-1">🧮 Algebra na 5!</h1>
+    <p class="mb-0 opacity-75">Sprawdź swoje umiejętności matematyczne</p>
+  </div>
+
+  <form (ngSubmit)="submit()" novalidate>
+    <div class="mb-3">
+      <label for="playerName" class="form-label fw-semibold">Jak masz na imię?</label>
+      <input
+        id="playerName"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="submitted() && nameControl.invalid"
+        [formControl]="nameControl"
+        placeholder="Wpisz swoje imię..."
+        autocomplete="given-name"
+        aria-describedby="playerNameError"
+      />
+      @if (submitted() && nameControl.invalid) {
+        <div id="playerNameError" class="invalid-feedback" role="alert">
+          Podaj imię (minimum 2 znaki).
+        </div>
+      }
+    </div>
+
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary btn-lg">
+        Zaczynamy! 🚀
+      </button>
+    </div>
+  </form>
+</app-card>
+

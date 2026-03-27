@@ -33,7 +33,7 @@ jobs:
         run: cat /home/runner/.npm/_logs/*.log
 
       - name: Build Angular app
-        run: npx ng build --configuration production --base-href /algebra-na-5/
+        run: npx ng build --configuration production --base-href /algebra-na-5-app/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

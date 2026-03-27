@@ -1,0 +1,27 @@
+import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
+import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { CardComponent } from '../../components/card/card.component';
+
+@Component({
+  selector: 'app-welcome',
+  imports: [ReactiveFormsModule, CardComponent],
+  templateUrl: './welcome.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class WelcomeComponent {
+  readonly nameStarted = output<string>();
+
+  readonly nameControl = new FormControl('', {
+    nonNullable: true,
+    validators: [Validators.required, Validators.minLength(2)],
+  });
+
+  readonly submitted = signal(false);
+
+  submit(): void {
+    this.submitted.set(true);
+    if (this.nameControl.invalid) return;
+    this.nameStarted.emit(this.nameControl.value.trim());
+  }
+}
+
