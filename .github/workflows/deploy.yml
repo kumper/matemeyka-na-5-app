@@ -33,7 +33,7 @@ jobs:
         run: cat /home/runner/.npm/_logs/*.log
 
       - name: Build Angular app
-        run: npx ng build --configuration production --base-href /matematyka-na-5-app/
+        run: npx ng build --configuration production --base-href /algebra-na-5/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -41,7 +41,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: 'dist/matematyka-na-5-app/browser'  # Angular 17+ output path
+          path: 'dist/algebra-na-5/browser'  # Angular 17+ output path
 
       - name: Deploy to GitHub Pages
         id: deployment
