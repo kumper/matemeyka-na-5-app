@@ -16,10 +16,17 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'questions/:id',
+    path: 'question',
     loadComponent: () =>
       import('./containers/question-page/question-page.component').then(
         (m) => m.QuestionPageComponent
+      ),
+  },
+  {
+    path: 'results',
+    loadComponent: () =>
+      import('./containers/result-page/result-page.component').then(
+        (m) => m.ResultPageComponent
       ),
   },
   {

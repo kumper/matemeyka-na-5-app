@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { CardComponent } from '../../components/card/card.component';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,7 +10,7 @@ import { CardComponent } from '../../components/card/card.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WelcomeComponent {
-  readonly nameStarted = output<string>();
+  readonly #gameService = inject(GameService);
 
   readonly nameControl = new FormControl('', {
     nonNullable: true,
@@ -21,7 +22,7 @@ export class WelcomeComponent {
   submit(): void {
     this.submitted.set(true);
     if (this.nameControl.invalid) return;
-    this.nameStarted.emit(this.nameControl.value.trim());
+    this.#gameService.startGame(this.nameControl.value.trim());
   }
 }
 

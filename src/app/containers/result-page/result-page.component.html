@@ -1,0 +1,55 @@
+<app-card>
+  <div class="text-center mb-4">
+    <div class="display-1 mb-2">{{ resultEmoji() }}</div>
+    <h1 class="fw-bold mb-1">Koniec quizu!</h1>
+    <p class="opacity-75 mb-0">{{ resultMessage() }}</p>
+  </div>
+
+  <!-- Score summary -->
+  <div class="row g-3 mb-4 text-center">
+    <div class="col-4">
+      <div class="result-stat rounded-3 p-3">
+        <div class="fs-2 fw-bold">{{ game.score() }}</div>
+        <small class="opacity-75">Punktów</small>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="result-stat rounded-3 p-3">
+        <div class="fs-2 fw-bold">{{ correctCount() }}</div>
+        <small class="opacity-75">Poprawnych</small>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="result-stat rounded-3 p-3">
+        <div class="fs-2 fw-bold">{{ maxReachedLevel() }}</div>
+        <small class="opacity-75">Max poziom</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Answer history -->
+  <div class="mb-4">
+    <h2 class="fs-6 fw-semibold opacity-75 mb-2 text-uppercase">Twoje odpowiedzi</h2>
+    <div class="d-flex flex-column gap-1">
+      @for (item of game.history(); track $index) {
+        <div class="d-flex justify-content-between align-items-center px-3 py-2 rounded-3 history-item">
+          <span class="me-2">{{ item.question.question }}</span>
+          <span>
+            @if (item.correct) {
+              <span class="badge bg-success">✔</span>
+            } @else {
+              <span class="badge bg-danger">✘</span>
+            }
+          </span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="d-grid">
+    <button type="button" class="btn btn-primary btn-lg" (click)="playAgain()">
+      Zagraj jeszcze raz 🔄
+    </button>
+  </div>
+</app-card>
+

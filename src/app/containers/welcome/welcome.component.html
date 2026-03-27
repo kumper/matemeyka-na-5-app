@@ -4,7 +4,7 @@
     <p class="mb-0 opacity-75">Sprawdź swoje umiejętności matematyczne</p>
   </div>
 
-  <form (ngSubmit)="submit()" novalidate>
+  <form novalidate>
     <div class="mb-3">
       <label for="playerName" class="form-label fw-semibold">Jak masz na imię?</label>
       <input
@@ -25,7 +25,7 @@
     </div>
 
     <div class="d-grid">
-      <button type="submit" class="btn btn-primary btn-lg">
+      <button type="button" (click)="submit()" class="btn btn-primary btn-lg">
         Zaczynamy! 🚀
       </button>
     </div>
