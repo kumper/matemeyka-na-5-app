@@ -1,5 +1,20 @@
-// Bootstrap
+// ── Bootstrap (must be first) ─────────────────────────────────────────────
 @use "bootstrap/scss/bootstrap";
 
-/* Global application styles */
+// ── Palette tokens (single source of truth) ──────────────────────────────
+:root {
+  --color-page-bg:     #111d2e;
+  --color-card-bg:     #1e2d45;
+  --color-card-border: #2e4269;
+  --color-card-shadow: rgba(0, 0, 0, 0.45);
+  --color-text:        #e8eef7;
+}
+
+// ── Global resets ─────────────────────────────────────────────────────────
+body {
+  background-color: var(--color-page-bg);
+  color: var(--color-text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
 
